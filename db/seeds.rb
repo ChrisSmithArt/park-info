@@ -39,18 +39,18 @@ require "csv"
 #   )
 # end
 
-assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
-assets_data = File.read(assets_csv)
-assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
+# assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
+# assets_data = File.read(assets_csv)
+# assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
 
-assets.each do |asset|
-  AssetCategory.find_or_create_by(name: asset['Asset Class'])
-end
+# assets.each do |asset|
+#   AssetCategory.find_or_create_by(asset_class: asset['Asset Class'])
+# end
 
 park_csv = Rails.root.join('db/Parks_and_Open_Space_20240626.csv')
 park_data = File.read(park_csv)
 parks = CSV.parse(park_data, headers: true, encoding: 'utf-8')
 
 parks.each do |park|
-  ParkCategory.find_or_create_by(name: park['Park Category'])
+  ParkCategory.find_or_create_by(park_category: park['Park Category'])
 end
