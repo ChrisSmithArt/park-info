@@ -10,44 +10,46 @@
 
 require "csv"
 
-Park.destroy_all
-ParkCategory.destroy_all
-Asset.destroy_all
-AssetCategory.destroy_all
+# Asset.destroy_all
+
+# ParkCategory.destroy_all
+# AssetCategory.destroy_all
+# Park.destroy_all
 
 
-park_csv = Rails.root.join('db/Parks_and_Open_Space_20240626.csv')
-park_data = File.read(park_csv)
-parks = CSV.parse(park_data, headers: true, encoding: 'utf-8')
 
-parks.each do |park|
-  category_name = park['Park Category']
-  category = ParkCategory.find_or_create_by(park_category: category_name)
+# park_csv = Rails.root.join('db/Parks_and_Open_Space_20240626.csv')
+# park_data = File.read(park_csv)
+# parks = CSV.parse(park_data, headers: true, encoding: 'utf-8')
 
-  Park.create(
-    park_id: park['Park ID'].to_i,
-    park_name: park['Park Name'],
-    park_description: park['Location Description'],
-    park_neighbourhood: park['Neighbourhood'],
-    total_area: park['Total Area in Hectares'].to_d,
-    park_location: park['Location'],
-    park_category: category,
-  )
-end
+# parks.each do |park|
+#   category_name = park['Park Category']
+#   category = ParkCategory.find_or_create_by(park_category: category_name)
 
-assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
-assets_data = File.read(assets_csv)
-assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
+#   Park.create(
+#     park_id: park['Park ID'].to_i,
+#     park_name: park['Park Name'],
+#     park_description: park['Location Description'],
+#     park_neighbourhood: park['Neighbourhood'],
+#     total_area: park['Total Area in Hectares'].to_d,
+#     park_location: park['Location'],
+#     park_category: category,
+#   )
+# end
 
-assets.each do |asset|
-  category_name = asset['Asset Class']
-  category = AssetCategory.find_or_create_by(asset_class: category_name)
+# assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
+# assets_data = File.read(assets_csv)
+# assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
 
-  Asset.create(
-    asset_id: asset['Asset ID'].to_i,
-    park_id: asset['Park ID'].to_i,
-    asset_size: asset['Asset Size'],
-    asset_type: asset['Asset Type'],
-    asset_class: category,
-  )
-end
+# assets.each do |asset|
+#   category_name = asset['Asset Class']
+#   category = AssetCategory.find_or_create_by(asset_class: category_name)
+
+#   Asset.create(
+#     asset_id: asset['Asset ID'].to_i,
+#     park_id: asset['Park ID'].to_i,
+#     asset_size: asset['Asset Size'],
+#     asset_type: asset['Asset Type'],
+#     asset_class: category,
+#   )
+# end

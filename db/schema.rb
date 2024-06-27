@@ -19,13 +19,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_231256) do
 
   create_table "assets", force: :cascade do |t|
     t.integer "asset_id"
-    t.string "asset_class"
     t.string "asset_type"
     t.string "asset_size"
     t.integer "park_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "asset_category_id"
+    t.integer "asset_category_id", null: false
     t.index ["asset_category_id"], name: "index_assets_on_asset_category_id"
     t.index ["park_id"], name: "index_assets_on_park_id"
   end
@@ -41,12 +40,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_231256) do
     t.string "park_name"
     t.string "park_description"
     t.string "park_neighbourhood"
-    t.string "park_category"
     t.decimal "total_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "park_location"
-    t.integer "park_category_id"
+    t.integer "park_category_id", null: false
     t.index ["park_category_id"], name: "index_parks_on_park_category_id"
   end
 
