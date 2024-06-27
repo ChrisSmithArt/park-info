@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_224442) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_231256) do
   create_table "asset_categories", force: :cascade do |t|
     t.string "asset_class"
     t.datetime "created_at", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_224442) do
     t.integer "park_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "asset_category_id"
+    t.index ["asset_category_id"], name: "index_assets_on_asset_category_id"
     t.index ["park_id"], name: "index_assets_on_park_id"
   end
 
@@ -44,7 +46,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_224442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "park_location"
+    t.integer "park_category_id"
+    t.index ["park_category_id"], name: "index_parks_on_park_category_id"
   end
 
+  add_foreign_key "assets", "asset_categories"
   add_foreign_key "assets", "parks"
+  add_foreign_key "parks", "park_categories"
 end
