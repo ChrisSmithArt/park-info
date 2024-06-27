@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_190526) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_190812) do
   create_table "assets", force: :cascade do |t|
     t.integer "asset_id"
     t.string "asset_class"
@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_190526) do
     t.string "park_name"
     t.string "park_description"
     t.string "park_neighbourhood"
-    t.string "string"
     t.string "park_category"
     t.decimal "total_area"
     t.datetime "created_at", null: false
