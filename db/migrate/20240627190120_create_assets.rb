@@ -5,7 +5,6 @@ class CreateAssets < ActiveRecord::Migration[7.1]
       t.string :asset_class
       t.string :asset_type
       t.string :asset_size
-      t.integer :park_id
       t.references :park, null: false, foreign_key: true
 
       t.timestamps
