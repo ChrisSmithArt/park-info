@@ -4,3 +4,19 @@
 <p>Located around <%= @parks.park_description %></p>
 <p>Consisting of <%= @parks.total_area*10000 %> square meters</p>
 
+<h3>Park Assets</h3>
+<% @park.assets.each do |asset| %>
+<ul>
+    <li>
+        <%=asset.asset_class%>
+    </li>
+    <li>
+        <%=asset.asset_type%>
+    </li>
+    <%if asset.asset_size != nil%>
+        <li>
+            <%=asset.asset_class%>
+        </li>
+    <%end%>
+<ul>
+<%end %>
