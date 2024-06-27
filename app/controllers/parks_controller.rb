@@ -1,6 +1,6 @@
 class ParksController < ApplicationController
   def index
-    @parks = Park.all
+    @parks = Park.all.page params[:page]
   end
   def show
     @parks = Park.find(params[:id])
