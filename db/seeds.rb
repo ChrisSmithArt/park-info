@@ -25,16 +25,16 @@ require "csv"
 #   )
 # end
 
-assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
-assets_data = File.read(assets_csv)
-assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
+# assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
+# assets_data = File.read(assets_csv)
+# assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
 
-assets.each do |asset|
-  ParkAsset.create(
-    asset_id: asset['Asset ID'].to_i,
-    park_id: asset['Park ID'].to_i,
-    asset_class: asset['Asset Class'],
-    asset_size: asset['Asset Size'],
-    asset_type: asset['Asset Type'],
-  )
-end
+# assets.each do |asset|
+#   Asset.create(
+#     asset_id: asset['Asset ID'].to_i,
+#     park_id: asset['Park ID'].to_i,
+#     asset_class: asset['Asset Class'],
+#     asset_size: asset['Asset Size'],
+#     asset_type: asset['Asset Type'],
+#   )
+# end
