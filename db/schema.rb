@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_190812) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_224442) do
+  create_table "asset_categories", force: :cascade do |t|
+    t.string "asset_class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "assets", force: :cascade do |t|
     t.integer "asset_id"
     t.string "asset_class"
@@ -20,6 +26,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_190812) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["park_id"], name: "index_assets_on_park_id"
+  end
+
+  create_table "park_categories", force: :cascade do |t|
+    t.string "park_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "parks", force: :cascade do |t|

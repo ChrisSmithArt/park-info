@@ -1,0 +1,2 @@
+class ParkCategory < ApplicationRecord
+end
