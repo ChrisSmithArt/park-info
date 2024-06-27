@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  park_id: 1
+  park_name: MyString
+  park_description: MyString
+  park_neighbourhood: MyString
+  string: MyString
+  park_category: MyString
+  total_area: 9.99
+
+two:
+  park_id: 1
+  park_name: MyString
+  park_description: MyString
+  park_neighbourhood: MyString
+  string: MyString
+  park_category: MyString
+  total_area: 9.99

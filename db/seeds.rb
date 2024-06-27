@@ -7,3 +7,34 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# require "csv"
+# park_csv = Rails.root.join('db/Parks_and_Open_Space_20240626.csv')
+# park_data = File.read(park_csv)
+# parks = CSV.parse(park_data, headers: true, encoding: 'utf-8')
+
+# parks.each do |park|
+#   Park.create(
+#     park_id: park['Park ID'].to_i,
+#     name: park['Park Name'],
+#     address: park['Address'],
+#     description: park['Location Description'],
+#     category: park['Park Category'],
+#     totalarea: park['Total Area in Hectares'].to_d,
+#     location: park['Location'],
+#   )
+# end
+
+# parkasset_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
+# parkasset_data = File.read(parkasset_csv)
+# parkassets = CSV.parse(parkasset_data, headers: true, encoding: 'utf-8')
+
+# parkassets.each do |parkasset|
+#   ParkAsset.create(
+#     id: parkasset['Asset ID'].to_i,
+#     park_id: parkasset['Park ID'].to_i,
+#     assetclass: parkasset['Asset Class'],
+#     assetsize: parkasset['Asset Size'],
+#     assettype: parkasset['Asset Type'],
+#   )
+# end
