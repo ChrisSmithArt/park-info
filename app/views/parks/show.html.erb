@@ -1,22 +1,28 @@
 <h1><%= @parks.park_name %></h1>
 <h2>...is a <%= @parks.park_category %></h2>
 <br>
-<p>Located around <%= @parks.park_description %></p>
+<p>Located around <%= @parks.park_description %> in the neighbourhood of <%= @parks.park_neighbourhood%></p>
 <p>Consisting of <%= @parks.total_area*10000 %> square meters</p>
 
 <h3>Park Assets</h3>
-<% @park.assets.each do |asset| %>
-<ul>
-    <li>
-        <%=asset.asset_class%>
-    </li>
-    <li>
-        <%=asset.asset_type%>
-    </li>
-    <%if asset.asset_size != nil%>
-        <li>
-            <%=asset.asset_class%>
-        </li>
-    <%end%>
-<ul>
+<% if @parks.assets.any?%>
+    <ul>
+        <% @parks.assets.each do |asset| %>
+            <li>
+                <%=asset.asset_class%> (<%=asset.asset_type%>) 
+                <%if asset.asset_size != nil%>
+                    <ul>
+                        <li>
+                            Size: <%=asset.asset_size%>
+                        </li>
+                    </ul>
+                <%end%>
+             </li>
+             <br>            
+        <%end %>
+    <ul>
+<%else%>
+    <ul>
+        <li>No assets found for this park!</li>
+    </ul>
 <%end %>
