@@ -1,2 +1,13 @@
 <h1>Parks#index</h1>
-<p>Find me in app/views/parks/index.html.erb</p>
+<p>Find a Park, pick a park.</p>
+
+<ul>
+<%@parks.each do |park|%>
+  <%if park.park_id != nil%>
+  <li>
+      <%= link_to park.park_name, park %> ID:<%= park.park_id%>
+      
+    </li>
+    <%end%>
+<%end%>
+</ul>
