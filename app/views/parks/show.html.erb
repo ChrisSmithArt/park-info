@@ -1,7 +1,7 @@
 <%= render "application/menu" %>
 
 <h1><%= @parks.park_name %></h1>
-<h2>...is a <%= @parks.park_category %></h2>
+<h2>...is a <%= @parks.park_category.park_category %></h2>
 <br>
 <p>Located around <%= @parks.park_description %> in the neighbourhood of <%= @parks.park_neighbourhood%></p>
 <p>Consisting of <%= @parks.total_area*10000 %> square meters</p>
@@ -11,7 +11,7 @@
     <ul>
         <% @parks.assets.each do |asset| %>
             <li>
-                <%=asset.asset_class%> (<%=asset.asset_type%>) 
+                <%=asset.asset_category.asset_class%> (<%=asset.asset_type%>) 
                 <%if asset.asset_size != nil%>
                     <ul>
                         <li>
