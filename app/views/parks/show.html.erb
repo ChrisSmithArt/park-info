@@ -7,9 +7,9 @@
 <p>Consisting of <%= @parks.total_area*10000 %> square meters</p>
 
 <h3>Park Assets</h3>
-<% if @parks.assets.any?%>
-    <ul>
-        <% @parks.assets.each do |asset| %>
+<% if @assets.where(park_id: @parks.park_id).count > 0%>
+        <% @assets.each do |asset|%>
+        <% if asset.park_id == @parks.park_id%>
             <li>
                 <%=asset.asset_category.asset_class%> (<%=asset.asset_type%>) 
                 <%if asset.asset_size != nil%>
@@ -21,8 +21,8 @@
                 <%end%>
              </li>
              <br>            
-        <%end %>
-    <ul>
+        <%end%>
+    <%end%>
 <%else%>
     <ul>
         <li>No assets found for this park!</li>

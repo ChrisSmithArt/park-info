@@ -4,5 +4,6 @@ class ParksController < ApplicationController
   end
   def show
     @parks = Park.find(params[:id])
+    @assets = Asset.all
   end
 end
