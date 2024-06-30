@@ -1,0 +1,19 @@
+<%= render "application/menu" %>
+
+<h1>Parks#index</h1>
+<p>Find a Park, pick a park.</p>
+
+<ul>
+<%@parks.each do |park|%>
+  <%if park.park_id != nil%>
+  <li>
+      <%= link_to park.park_name, park %>
+      
+    </li>
+    <%end%>
+<%end%>
+</ul>
+
+<div>
+<%= paginate @parks %>
+    </div>

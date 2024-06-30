@@ -12,7 +12,7 @@
         <% if asset.park_id == @parks.park_id%>
             <li>
                 <%=asset.asset_category.asset_class%> (<%=asset.asset_type%>) 
-                <%if asset.asset_size != nil%>
+                <%if asset.asset_size = 'N/A'%>
                     <ul>
                         <li>
                             Size: <%=asset.asset_size%>
