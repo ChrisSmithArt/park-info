@@ -10,7 +10,6 @@ There are <%=@assets.count%> assets across <%=@assetCategories.count%> types of 
 <ul>
     <%@assetCategories.each do |category|%>
         <li>
-            <%#= link_to asset.asset_category.asset_class, asset %> 
             <%= link_to category.asset_class, category%>   <%= category.assets.count%> 
         </li>
     <%end%>

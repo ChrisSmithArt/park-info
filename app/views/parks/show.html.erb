@@ -11,8 +11,8 @@
         <% @assets.each do |asset|%>
         <% if asset.park_id == @parks.park_id%>
             <li>
-                <%=asset.asset_category.asset_class%> (<%=asset.asset_type%>) 
-                <%if asset.asset_size = 'N/A'%>
+                <%= link_to asset.asset_category.asset_class, asset.asset_category%> <%if asset.asset_type != 'N/A'%> (<%=asset.asset_type%>) <%end%>
+                <%if asset.asset_size != 'N/A'%>
                     <ul>
                         <li>
                             Size: <%=asset.asset_size%>
