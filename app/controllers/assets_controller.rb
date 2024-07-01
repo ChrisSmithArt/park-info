@@ -1,10 +1,11 @@
 class AssetsController < ApplicationController
   def index
-    @assetCategories = AssetCategory.all.page params[:page]
+    @assets = Asset.all
+    @assetCategories = AssetCategory.all
+    @parks = Park.all
   end
   def show
-    @assetCategories = AssetCategory.find(params[:id])
-    @parks = Park.all
-    @assets = Asset.all
+    @assets = Asset.find(params[:asset_category_id])
+
   end
 end
