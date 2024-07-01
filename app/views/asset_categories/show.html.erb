@@ -4,21 +4,27 @@
 
 
 <div>There <%=@assetCategories.assets.size > 1 ? "are" : "is"%>  <%=@assetCategories.assets.size%> <%=@assetCategories.asset_class%><%=@assetCategories.assets.size > 1 ? "S" : ""%> </div>
+
+
+<%= search_form_for @q do |f| %>
+# Search if the Park Name contains...
+  <%= f.label :park_name_cont %>
+  <%= f.search_field :park_name_cont %>
+<%= f.submit %>
+<%end%>
+
 <ul>
-    <%@parks.each do |park|%>
-    <%parkAssets = @assetCategories.assets.where(park_id: park.park_id)%>
-        <%if parkAssets.size > 0%>
-        <%pluralAssets = parkAssets.size > 1%>
-            <%parkAssets.uniq(&:park_id).each do |parkAsset|%>
-                <li>
-                <%= %>
-                 There <%=pluralAssets ? "are" : "is"%> <%=parkAssets.size%> <%=(parkAsset.asset_category.asset_class).downcase%><%=pluralAssets ? "s" : ""%> within <%= link_to park.park_name, park %>
-                </li>
+    <%@assetCategories.assets.uniq(&:park_id).each do |asset| %>
+        <%park = @parks.where(park_id: asset.park_id)%>
+        <%park.each do |pa| %>
+            <%parkAssets = @assetCategories.assets.where(park_id: pa.park_id)%>
+            <%pluralAssets = parkAssets.size > 1%>
+            <%parkAssets.uniq(&:park_id).each do |parkAsset| %>
+            <li>
+                There <%=pluralAssets ? "are" : "is"%> <%=parkAssets.size%> <%=(parkAsset.asset_category.asset_class).downcase%><%=pluralAssets ? "s" : ""%> within <%= link_to pa.park_name, pa %>
+            </li>
             <%end%>
-        
         <%end%>
     <%end%>
 </ul>
 
-
-<%# then to break that down into the amount of these for each park%>

@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#index"
 
+  resources :assets do
+    resources :asset_categories
+    resources :parks
+  end
+
   resources :asset_categories do
     resources :assets
     resources :parks

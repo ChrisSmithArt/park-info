@@ -37,18 +37,25 @@ require "csv"
 #   )
 # end
 
-assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
-assets_data = File.read(assets_csv)
-assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
+# assets_csv = Rails.root.join('db/Park_Asset_Inventory_20240626.csv')
+# assets_data = File.read(assets_csv)
+# assets = CSV.parse(assets_data, headers: true, encoding: 'utf-8')
 
-assets.each do |asset|
-  category_name = asset['Asset Class']
-  category = AssetCategory.find_or_create_by(asset_class: category_name)
-  Asset.create!(
-    asset_id: asset['Asset ID'].to_i,
-    park_id: asset['Park ID'].to_i,
-    asset_size: asset['Asset Size'],
-    asset_type: asset['Asset Type'],
-    asset_category_id: category.id,
-  )
+# assets.each do |asset|
+#   category_name = asset['Asset Class']
+#   category = AssetCategory.find_or_create_by(asset_class: category_name)
+#   Asset.create!(
+#     asset_id: asset['Asset ID'].to_i,
+#     park_id: asset['Park ID'].to_i,
+#     asset_size: asset['Asset Size'],
+#     asset_type: asset['Asset Type'],
+#     asset_category_id: category.id,
+#   )
+# end
+
+AssetCategory.all.each do |category|
+  Asset.where(asset_category_id: category.asset_category_id).each do |asset|
+    asset.asset_class = category.asset_class
+    asset.save
+  end
 end
