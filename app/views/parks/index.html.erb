@@ -3,8 +3,15 @@
 <h1>Parks#index</h1>
 <p>Find a Park, pick a park.</p>
 
+<%= search_form_for @q do |f| %>
+# Search if the username field contains...
+  <%= f.label :park_name_cont %>
+  <%= f.search_field :park_name_cont %>
+<%= f.submit %>
+<%end%>
+
 <ul>
-<%@parks.each do |park|%>
+<%@parkQ.each do |park|%>
   <%if park.park_id != nil%>
   <li>
       <%= link_to park.park_name, park %>
@@ -15,5 +22,5 @@
 </ul>
 
 <div>
-<%= paginate @parks %>
+<%= paginate @parkQ %>
     </div>

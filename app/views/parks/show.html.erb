@@ -6,6 +6,8 @@
 <p>Located around <%= @parks.park_description %> in the neighbourhood of <%= @parks.park_neighbourhood%></p>
 <p>Consisting of <%= @parks.total_area*10000 %> square meters</p>
 
+<p><%=@parks.assets.count %></p>
+
 <h3>Park Assets</h3>
 <% if @assets.where(park_id: @parks.park_id).count > 0%>
         <% @assets.each do |asset|%>

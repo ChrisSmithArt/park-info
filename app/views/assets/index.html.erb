@@ -1,17 +1,17 @@
 <%= render "application/menu" %>
 
 <h2>Park Assets</h2>
-<p>List of Asset Categories</p>
+<p>List of Assets across all Parks</p>
 
 <div>
 There are <%=@assets.count%> assets across <%=@assetCategories.count%> types of assets in the <%=@parks.count%> parks in Winnipeg, MB.
 </div>
 
 <ul>
-    <%@assetCategories.each do |category|%>
+    <%@assets.each do |asset|%>
         <li>
             <%#= link_to asset.asset_category.asset_class, asset %> 
-            <%= link_to category.asset_class, category%>   <%= category.assets.count%> 
+            <%= link_to asset.asset_category.asset_class, asset%> from <%=asset.park_id%> 
         </li>
     <%end%>
 </ul>

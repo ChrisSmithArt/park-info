@@ -11,6 +11,7 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
+gem 'ransack'
 
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
 

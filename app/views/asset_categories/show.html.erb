@@ -3,5 +3,22 @@
 <h2><%=@assetCategories.asset_class%></h2>
 
 
-<%# then to display the amount of those %>
-<%# then to break that down into the  %>
+<div>There <%=@assetCategories.assets.size > 1 ? "are" : "is"%>  <%=@assetCategories.assets.size%> <%=@assetCategories.asset_class%><%=@assetCategories.assets.size > 1 ? "S" : ""%> </div>
+<ul>
+    <%@parks.each do |park|%>
+    <%parkAssets = @assetCategories.assets.where(park_id: park.park_id)%>
+        <%if parkAssets.size > 0%>
+        <%pluralAssets = parkAssets.size > 1%>
+            <%parkAssets.uniq(&:park_id).each do |parkAsset|%>
+                <li>
+                <%= %>
+                 There <%=pluralAssets ? "are" : "is"%> <%=parkAssets.size%> <%=(parkAsset.asset_category.asset_class).downcase%><%=pluralAssets ? "s" : ""%> within <%= link_to park.park_name, park %>
+                </li>
+            <%end%>
+        
+        <%end%>
+    <%end%>
+</ul>
+
+
+<%# then to break that down into the amount of these for each park%>

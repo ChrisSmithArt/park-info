@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :parks do
     resources :assets
+    resource :asset_categories
+    collection do
+      match 'search' => 'parks#search', via: [:get, :post], as: :search
+    end
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
