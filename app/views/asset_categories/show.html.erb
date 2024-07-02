@@ -6,18 +6,11 @@
 <div>There <%=@assetCategories.assets.size > 1 ? "are" : "is"%>  <%=@assetCategories.assets.size%> <%=@assetCategories.asset_class%><%=@assetCategories.assets.size > 1 ? "S" : ""%> </div>
 
 
-<%= search_form_for @q do |f| %>
-# Search if the Park Name contains...
-  <%= f.label :park_name_cont %>
-  <%= f.search_field :park_name_cont %>
-<%= f.submit %>
-<%end%>
-
 <ul>
-    <%@assetCategories.assets.uniq(&:park_id).each do |asset| %>
+    <%@assets.uniq(&:park_id).each do |asset| %>
         <%park = @parks.where(park_id: asset.park_id)%>
         <%park.each do |pa| %>
-            <%parkAssets = @assetCategories.assets.where(park_id: pa.park_id)%>
+            <%parkAssets = @assets.where(park_id: pa.park_id)%>
             <%pluralAssets = parkAssets.size > 1%>
             <%parkAssets.uniq(&:park_id).each do |parkAsset| %>
             <li>
@@ -27,4 +20,5 @@
         <%end%>
     <%end%>
 </ul>
+
 

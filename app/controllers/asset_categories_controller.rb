@@ -6,7 +6,7 @@ class AssetCategoriesController < ApplicationController
   end
   def show
     @assetCategories = AssetCategory.find(params[:id])
-    @assets = Asset.all
+    @assets = @assetCategories.assets
     @parks = Park.all
   end
 end

@@ -1,9 +1,5 @@
 class ParksController < ApplicationController
   def index
-    # @parks = Park.all.page params[:page]
-    # @q = Park.ransack (params[:q])
-    # @parkQ = @q.result(distinct: true)
-
     @q = Park.ransack (params[:q])
     @parkQ = @q.result(distinct: true)
 

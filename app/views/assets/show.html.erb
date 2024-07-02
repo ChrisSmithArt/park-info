@@ -1,2 +1,14 @@
 <%= render "application/menu" %>
 
+
+<h1><%= link_to @assets.asset_class, @assets.asset_category%></h1>
+<h2> <%if @assets.asset_type != 'N/A'%> is as...(<%=@assets.asset_type%>) <%end%></h2>
+<br>
+<p>Located around <%= link_to  @parks.park_name, @parks%></p>
+<%if @assets.asset_size != 'N/A'%>
+    <ul>
+        <li>
+            Size: <%=@assets.asset_size%>
+        </li>
+    </ul>
+<%end%>

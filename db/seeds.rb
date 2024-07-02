@@ -54,7 +54,7 @@ require "csv"
 # end
 
 AssetCategory.all.each do |category|
-  Asset.where(asset_category_id: category.asset_category_id).each do |asset|
+  Asset.where(asset_category_id: category.id).each do |asset|
     asset.asset_class = category.asset_class
     asset.save
   end

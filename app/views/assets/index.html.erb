@@ -7,11 +7,23 @@
 There are <%=@assets.count%> assets across <%=@assetCategories.count%> types of assets in the <%=@parks.count%> parks in Winnipeg, MB.
 </div>
 
+
+<%= search_form_for @q do |f| %>
+# Search if the Type of Asset contains...
+  <%= f.label :asset_class_cont %>
+  <%= f.search_field :asset_class_cont %>
+<%= f.submit %>
+<%end%>
+
+
 <ul>
-    <%@assets.each do |asset|%>
+    <%@assetQ.each do |asset|%>
         <li>
-            <%#= link_to asset.asset_category.asset_class, asset %> 
-            <%= link_to asset.asset_category.asset_class, asset%> from <%=asset.park_id%> 
+            <%= link_to asset.asset_class, asset%> from <%=@parks.where(park_id: asset.park_id).first.park_name%> 
         </li>
     <%end%>
 </ul>
+
+<div>
+    <%= paginate @assetQ %>
+</div>
