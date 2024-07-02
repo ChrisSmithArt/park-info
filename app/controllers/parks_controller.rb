@@ -3,7 +3,7 @@ class ParksController < ApplicationController
     @q = Park.ransack (params[:q])
     @parkQ = @q.result(distinct: true)
 
-    @parkQ = @parkQ.order('park_name').page(params[:page]).per(12)
+    @parkQ = @parkQ.order('park_name').page(params[:page]).per(15)
   end
   def show
     @parks = Park.find(params[:id])

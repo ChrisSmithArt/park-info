@@ -9,22 +9,23 @@
 <p><%=@parks.assets.count %></p>
 
 <h3>Park Assets</h3>
+
 <% if @assets.where(park_id: @parks.park_id).count > 0%>
-        <% @assets.each do |asset|%>
+    <ul>
+    <% @assets.each do |asset|%>
         <% if asset.park_id == @parks.park_id%>
+        
             <li>
-                <%= link_to asset.asset_class, asset%> <%if asset.asset_type != 'N/A'%> (<%=asset.asset_type%>) <%end%>
+                <%= link_to asset.asset_class, asset%> 
+                <%if asset.asset_type != 'N/A'%><br> (<%=asset.asset_type%>) <%end%>
                 <%if asset.asset_size != 'N/A'%>
-                    <ul>
-                        <li>
-                            Size: <%=asset.asset_size%>
-                        </li>
-                    </ul>
+                <br> Size: <%=asset.asset_size%>
                 <%end%>
-             </li>
-             <br>            
+             </li>      
         <%end%>
     <%end%>
+
+    </ul>
 <%else%>
     <ul>
         <li>No assets found for this park!</li>
